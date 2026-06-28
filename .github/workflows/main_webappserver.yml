@@ -50,7 +50,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x' # Update to match your local Node version if needed
+          node-version: '24.13.0'
 
       - name: Install dependencies and build
         run: |
@@ -61,7 +61,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'your-app-service-name' # REPLACE THIS with your actual Azure App Service name
+          app-name: 'webappserver'
           slot-name: 'production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: .

@@ -3,6 +3,7 @@ import fs from "fs";
 import cors from "cors"
 
 const app = express();
+const apiRouter = express.Router();
 const PORT = 8080;
 
 const corsOptions = {
@@ -31,7 +32,7 @@ function saveUsers(users) {
 }
 
 // Register
-app.post("/register", (req, res) => {
+apiRouter.post("/register", (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -67,7 +68,7 @@ app.post("/register", (req, res) => {
 });
 
 // Login
-app.post("/login", (req, res) => {
+apiRouter.post("/login", (req, res) => {
   const { email, password } = req.body;
 
   const users = getUsers();
@@ -94,7 +95,7 @@ app.post("/login", (req, res) => {
 });
 
 // Profile
-app.get("/profile/:userid", (req, res) => {
+apiRouter.get("/profile/:userid", (req, res) => {
   const { userid } = req.params;
 
   const users = getUsers();
@@ -113,6 +114,8 @@ app.get("/profile/:userid", (req, res) => {
     email: user.email,
   });
 });
+
+app.use("/api", apiRouter)
 
 app.get("/", (_, res) => {
   res.json({

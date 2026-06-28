@@ -27,7 +27,6 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          # JavaScript covers both Node.js and TypeScript
           languages: javascript
           disable-default-queries: false
 

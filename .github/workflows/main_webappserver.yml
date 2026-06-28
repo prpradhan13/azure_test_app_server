@@ -1,5 +1,4 @@
 name: Build and deploy Node.js app to Azure Web App - webappserver
-
 on:
   push:
     branches:

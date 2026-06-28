@@ -114,6 +114,12 @@ app.get("/profile/:userid", (req, res) => {
   });
 });
 
+app.get("/", (_, res) => {
+  res.json({
+    message: "Welcome to server"
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

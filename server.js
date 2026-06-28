@@ -115,13 +115,14 @@ apiRouter.get("/profile/:userid", (req, res) => {
   });
 });
 
-app.use("/api", apiRouter)
-
-app.get("/", (_, res) => {
+apiRouter.get("/", (_, res) => {
   res.json({
     message: "Welcome to server"
   })
 })
+
+app.use("/api", apiRouter)
+
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
